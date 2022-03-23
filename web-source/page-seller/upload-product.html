@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>SKKU Flea Market</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="stylesheet" href="../vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
+  <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/upload.css">
+  <!--===============================================================================================-->
+</head>
+
+<body>
+  <!--================ Start Header Menu Area =================-->
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="index.html"><img src="../img/logo.png" alt=""></a>
+          <h6> Sell</h6>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+              <li class="nav-item"><a class="nav-link" href="index.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="list.html">Status</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Form</a></li>
+            </ul>
+
+            <ul class="nav-shop">
+              <li class="nav-item"><a class="button button-header" href="../login.html">Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--================ End Header Menu Area =================-->
+
+  <!-- ================ start banner area ================= -->
+  <section class="blog-banner-area" id="contact">
+    <div class="container h-100">
+      <div class="blog-banner">
+        <div class="text-center">
+          <h1>Upload Products</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">About Us</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Upload Products</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================ end banner area ================= -->
+
+
+  <section class="section-margin--small">
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+          <input id="upload-file" name="upload-file" type="file" style="display: none;" onchange="previewFile()">
+          <div class="img-upload" id="img-upload">
+            <p id="upload-text">Browse and Select Product Images.</p>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-6">
+          <form action="#/" class="form-contact contact_form" id="contactForm">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" type="text" id="pname" placeholder="Product">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="price" placeholder="Price">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="seller" placeholder="Seller">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="phonenum" placeholder="Contact">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="tradingplace" placeholder="Location">
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="flea-market" onclick="checkOnlyOne(this);">
+                  <label class="custom-control-label" for="flea-market">Market</label>
+                </div>
+                <div class="custom-control custom-checkbox mr-sm-2">
+                  <input type="checkbox" class="custom-control-input" id="auction" onclick="checkOnlyOne(this);"
+                    onChange="checkAuction(this)">
+                  <label class="custom-control-label" for="auction">Auction</label>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="datetime-local" style="visibility: hidden;" id="remaintime"
+                    placeholder="Enter Remaining Time" value="null">
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group text-center text-md-right mt-3">
+              <button type="reset" class="button button--active button-contactForm" onclick="writeProductData()">
+                Upload
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================ Start footer Area  =================-->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row d-flex">
+          <p class="col-lg-12 footer-text text-center">
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script>
+            SKKU - WEB LAB - Allan Tazhnenov
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--================ End footer Area  =================-->
+
+
+
+  <!--===============================================================================================-->
+  <script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
+  <script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="../vendors/skrollr.min.js"></script>
+  <script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
+  <script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
+  <script src="../vendors/jquery.ajaxchimp.min.js"></script>
+  <script src="../vendors/mail-script.js"></script>
+  <script src="../js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('form input').change(function () {
+        $('form p').text(1 + " file(s) selected");
+      });
+    });
+
+    $('#img-upload').on('click', function () {
+      $('#upload-file').trigger('click');
+    });
+
+
+    function checkOnlyOne(obj) {
+      var chk = document.getElementById("flea-market");
+      if (chk == obj) {//flea
+        document.getElementById("auction").checked = false;
+        document.getElementById("remaintime").setAttribute("style", "visibility:hidden");
+      }
+      else { // auction
+        document.getElementById("flea-market").checked = false;
+      }
+    }
+
+    function checkAuction(obj) {
+      if (obj.checked) document.getElementById("remaintime").setAttribute("style", "visibility:visible");
+      else document.getElementById("remaintime").setAttribute("style", "visibility:hidden");
+    }
+  </script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+
+	<script>
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyDMBmB3Qp6IIOnc2etk72sxSO9n1ocQGVE",
+	    authDomain: "skku-project-web.firebaseapp.com",
+	    projectId: "skku-project-web",
+	    storageBucket: "skku-project-web.appspot.com",
+	    messagingSenderId: "20634346129",
+	    appId: "1:20634346129:web:1fbf6989218f1daa2c9530",
+	    measurementId: "G-ZTE6TTHFR5"
+	  };
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+
+  <script>
+
+    var db = firebase.firestore();
+    var reader = new FileReader();
+
+    function previewFile() {
+      var file = document.querySelector('input[type=file]').files[0];
+
+      reader.addEventListener("load", function () {
+        $('#img-upload').css({
+          "background": "url(" + reader.result + ")",
+          "background-repeat": "no-repeat",
+          "background-position": "center center",
+          "background-size": "cover"
+        });
+        $("#upload-text").hide();
+      }, false);
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function writeProductData() {
+
+      //pname, phonenum, price, seller,type
+      var pname = document.getElementById("pname").value;
+      var phonenum = document.getElementById("phonenum").value;
+      var price = document.getElementById("price").value;
+      var seller = document.getElementById("seller").value;
+      var tradingplace = document.getElementById("tradingplace").value;
+      var remaintime = document.getElementById("remaintime").value;
+      var type = null;
+      var status = "selling";
+
+      if (document.getElementById("auction").checked) {
+        type = "auction";
+      }
+      else if (document.getElementById("flea-market").checked){
+        type = "fleamarket";
+        var d = new Date();
+        var year = d.getFullYear();
+        var month = d.getMonth();
+        var day = d.getDate();
+        remaintime = new Date(year + 1, month, day);
+      }
+
+
+      if (pname == "" || phonenum == "" || price == "" || seller == "" || type == "" || reader.result == null) {
+        alert("Fill in the all blank.");
+        return;
+      }
+      else {
+        db.collection("product").add({
+          pname: pname,
+          phonenum: phonenum,
+          price: parseInt(price),
+          seller: seller,
+          tradingplace: tradingplace,
+          type: type,
+          history: [],
+          remaintime: firebase.firestore.Timestamp.fromDate(new Date(remaintime)),
+          status: status,
+          img_src: reader.result
+        })
+          .then(function () {
+            $('#img-upload').css({ "background": "white" });
+            $("#upload-text").show();
+            alert("Remain type"+remaintime);
+            alert("Success to create your account!");
+          })
+          .catch(function (error) {
+            console.error("Error writing document: ", error);
+          });
+      }
+    }
+
+
+  </script>
+
+  <!--===============================================================================================-->
+
+</body>
+
+</html>

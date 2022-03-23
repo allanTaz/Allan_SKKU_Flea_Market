@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SKKU Flea Market</title>
+	<link rel="icon" href="img/favicon.png" type="image/png">
+	<link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="vendors/linericon/style.css">
+	<link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
+	<link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="vendors/nice-select/nice-select.css">
+	<link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<!-- Marks the start of the header-->
+	<header class="header_area">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container">
+					<img src="img/logo.png" alt="">
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!-- End of the header-->
+
+
+	<!-- Marks the start of the banner-->
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Register</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- End of the banner-->
+
+
+	<!-- Marks the start of the login-->
+
+	<section class="login_box_area section-margin">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<div class="hover">
+							<h4>Do you have an account?</h4>
+							<p>Welcome Back.&nbsp;</p>
+							<a class="button button-account" href="login.html">Login</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner register_form_inner">
+						<h3>New Account</h3>
+						<div class="create_account">
+
+							<input type="checkbox" id="buyer" onclick="checkOnlyOne(this);">
+							<label for="buyer">Buy</label>
+
+							<input type="checkbox" id="seller" onclick="checkOnlyOne(this);">
+							<label for="seller">Sell</label>
+						</div>
+						<form class="row login_form" action="#/" id="register_form">
+							<div class="col-md-12 form-group-dp">
+								<input type="text" class="form-control" id="name" name="name" placeholder="User ID"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'">
+								<button type="button" onclick="checkId()">Check</button>
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="email" name="email"
+									placeholder="Email Address" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Email Address'">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="password" name="password"
+									placeholder="Password" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Password'">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+									placeholder="Confirm Password" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Confirm Password'">
+							</div>
+							<div class="col-md-12 form-group">
+								<button type="reset" onclick="writeUserData()"
+									class="button button-register w-100">Register</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End of the login-->
+
+
+	<!-- Marks the start of the footer-->
+	<footer>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>
+						 SKKU - WEB LAB - Allan Tazhnenov
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End of the footer-->
+
+
+
+	<script src="vendors/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
+	<script src="vendors/skrollr.min.js"></script>
+	<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+	<script src="vendors/nice-select/jquery.nice-select.min.js"></script>
+	<script src="vendors/jquery.ajaxchimp.min.js"></script>
+	<script src="vendors/mail-script.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		function checkOnlyOne(obj) {
+			var chk = document.getElementById("seller");
+			if (chk == obj) document.getElementById("buyer").checked = false;
+			else document.getElementById("seller").checked = false;
+		}
+	</script>
+
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+	  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+
+		<script>
+		  var firebaseConfig = {
+		    apiKey: "AIzaSyDMBmB3Qp6IIOnc2etk72sxSO9n1ocQGVE",
+		    authDomain: "skku-project-web.firebaseapp.com",
+		    projectId: "skku-project-web",
+		    storageBucket: "skku-project-web.appspot.com",
+		    messagingSenderId: "20634346129",
+		    appId: "1:20634346129:web:1fbf6989218f1daa2c9530",
+		    measurementId: "G-ZTE6TTHFR5"
+		  };
+		  firebase.initializeApp(firebaseConfig);
+		  firebase.analytics();
+		</script>
+
+	<script>
+
+		var db = firebase.firestore();
+		function checkId() {
+
+			var usertype = null;
+			if (document.getElementById("seller").checked) usertype = "seller";
+			else if (document.getElementById("buyer").checked) usertype = "buyer";
+
+			var name = document.getElementById("name").value;
+			if (name == "") {
+				alert("Create a username");
+				return;
+			}
+
+			db.collection("user").where("user_name", "==", name).where("user_type", "==", usertype)
+				.get()
+				.then(function (qs) {
+					if (!qs.empty) {
+						qs.forEach(function (doc) {
+							alert("Username is taken");
+							document.getElementById("name").value = "";
+						});
+					}
+					else {
+						alert("Username available");
+					}
+
+				})
+		}
+
+		function writeUserData() {
+			var usertype = null;
+			if (document.getElementById("seller").checked) usertype = "seller";
+			else if (document.getElementById("buyer").checked) usertype = "buyer";
+
+			if (usertype == null) {
+				alert("Are you a Seller or a Buyer?");
+				return;
+			}
+			//name, email, password, confirmPassword
+
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("password").value;
+			var confirmPassword = document.getElementById("confirmPassword").value;
+
+			if (password != confirmPassword) {
+				alert("Please Check your Password.");
+				return;
+			}
+			else if (password == "" || name == "" || email == "") {
+				alert("Please check all boxes.");
+				return;
+			}
+			else {
+				// Add a new document in collection "cities"
+				db.collection("user").add({
+					user_name: name,
+					email: email,
+					user_pw: password,
+					user_type: usertype
+				})
+					.then(function () {
+						console.log("Done!");
+						alert("Congratulations! You now own an account!");
+					})
+					.catch(function (error) {
+						console.error("Unable to create an account. Please try again: ", error);
+					});
+			}
+		}
+	</script>
+</body>
+
+</html>

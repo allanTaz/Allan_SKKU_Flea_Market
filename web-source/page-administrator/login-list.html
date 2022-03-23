@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Site Admins</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../img/favicon.png" type="image/png">
+  <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
+  <link rel="stylesheet" type="text/css" href="../css/login-util.css">
+  <link rel="stylesheet" type="text/css" href="../css/login-main.css">
+  <link rel="stylesheet" href="../vendors/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="../vendors/linericon/style.css">
+  <link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <!--===============================================================================================-->
+</head>
+
+<body>
+  <!--================ Start Header Menu Area =================-->
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="index.html"><img src="../img/logo.png" alt=""></a>
+          <h4>Board Members</h4>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav-shop">
+              <li class="nav-item"><a class="button button-header" href="../login.html">Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--================ End Header Menu Area =================-->
+
+  <!-- ================ start banner area ================= -->
+  <section class="blog-banner-area" id="category">
+    <div class="container h-100">
+      <div class="blog-banner">
+        <div class="text-center">
+          <h1>Admins</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <p>Manage User List<br>
+              Modify User Data.</p>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ================ end banner area ================= -->
+
+  <div class="limiter">
+    <div class="container-table100">
+      <div class="wrap-table100">
+        <div class="table100 ver1 m-b-110">
+
+          <div class="table100-head">
+            <table>
+              <thead>
+                <tr class="row100 head">
+                  <th class="cell100 column1">User ID</th>
+                  <th class="cell100 column2">Password</th>
+                  <th class="cell100 column3">Email</th>
+                  <th class="cell100 column4">Buyer or Seller</th>
+                  <th class="cell100 column5">Remove</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <div class="table100-body js-pscroll">
+            <table>
+              <tbody id="login-list-body">
+                <template id="login-list-row">
+                  <tr class="row100 body">
+                    <td class="cell100 column1" contenteditable="true"></td>
+                    <td class="cell100 column2" contenteditable="true"></td>
+                    <td class="cell100 column3" contenteditable="true"></td>
+                    <td class="cell100 column4" contenteditable="true"></td>
+                    <td class="cell100 column5"><button type="button" onClick="deleteRow(this)">Delete</button></td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group text-center text-md-right">
+      <button class="button button--active button-contactForm" onClick="saveInfo()">Done</button>
+    </div>
+  </div>
+
+  <!--================ Start footer Area  =================-->
+  <footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row d-flex">
+          <p class="col-lg-12 footer-text text-center">
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script>
+            SKKU - WEB LAB - Allan Tazhnenov
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--================ End footer Area  =================-->
+
+  <!--===============================================================================================-->
+
+  <script>
+    $('.js-pscroll').each(function () {
+      var ps = new PerfectScrollbar(this);
+
+      $(window).on('resize', function () {
+        ps.update();
+      })
+    });
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+
+  	<script>
+  	  var firebaseConfig = {
+  	    apiKey: "AIzaSyDMBmB3Qp6IIOnc2etk72sxSO9n1ocQGVE",
+  	    authDomain: "skku-project-web.firebaseapp.com",
+  	    projectId: "skku-project-web",
+  	    storageBucket: "skku-project-web.appspot.com",
+  	    messagingSenderId: "20634346129",
+  	    appId: "1:20634346129:web:1fbf6989218f1daa2c9530",
+  	    measurementId: "G-ZTE6TTHFR5"
+  	  };
+  	  firebase.initializeApp(firebaseConfig);
+  	  firebase.analytics();
+  	</script>
+
+  <script>
+
+    var db = firebase.firestore();
+    var docList = [];
+
+    db.collection("user")
+      .get()
+      .then(function (qs) {
+        docList = qs.docs;
+        qs.forEach(function (doc) {
+          var target = document.getElementById('login-list-row');
+          var clone = document.importNode(target.content, true);
+          var tb = document.querySelector("tbody");
+          td = clone.querySelectorAll("td");
+          td[0].textContent = doc.data().user_id;
+          td[1].textContent = doc.data().user_pw;
+          td[2].textContent = doc.data().email;
+          td[3].textContent = doc.data().user_type;
+          tb.appendChild(clone);
+        })
+      })
+
+    function deleteRow(obj) {
+      if (confirm('Confirm Delete')) {
+        var tr = $(obj).parent().parent();
+        var row_idx = obj.parentElement.parentElement.rowIndex;
+        docList[row_idx].ref.delete()
+          .then(function () {
+            tr.remove();
+            if (row_idx > -1) {
+              docList.splice(row_idx, 1);
+            }
+          });
+      }
+    }
+
+    function saveInfo() {
+      var table = document.getElementById("login-list-body");
+
+      for (var i = 0; i < docList.length; i++) {
+        docList[i].ref.set({
+          user_id: table.querySelectorAll("tr")[i].querySelectorAll("td")[0].textContent,
+          user_pw: table.querySelectorAll("tr")[i].querySelectorAll("td")[1].textContent,
+          email: table.querySelectorAll("tr")[i].querySelectorAll("td")[2].textContent,
+          user_type: table.querySelectorAll("tr")[i].querySelectorAll("td")[3].textContent
+        })
+          .then(function () {
+          })
+      }
+    }
+
+  </script>
+  <!--===============================================================================================-->
+</body>
+
+</html>

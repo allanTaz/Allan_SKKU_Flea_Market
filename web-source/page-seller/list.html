@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>SKKU Flea Market</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="../img/favicon.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="../css/util.css">
+	<link rel="stylesheet" type="text/css" href="../css/list.css">
+	<link rel="stylesheet" href="../vendors/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="../vendors/fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="../vendors/themify-icons/themify-icons.css">
+	<link rel="stylesheet" href="../vendors/linericon/style.css">
+	<link rel="stylesheet" href="../vendors/owl-carousel/owl.theme.default.min.css">
+	<link rel="stylesheet" href="../vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="../vendors/nice-select/nice-select.css">
+	<link rel="stylesheet" href="../vendors/nouislider/nouislider.min.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<!--===============================================================================================-->
+</head>
+
+<body>
+	<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container">
+					<a class="navbar-brand logo_h" href="index.html"><img src="../img/logo.png" alt=""></a>
+					<h6> Sell</h6>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+							<li class="nav-item"><a class="nav-link" href="index.html">About Us</a></li>
+							<li class="nav-item"><a class="nav-link" href="list.html">Status</a></li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						</ul>
+
+						<ul class="nav-shop">
+							<li class="nav-item"><a class="button button-header" href="../login.html">Sign Out</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!--================ End Header Menu Area =================-->
+
+	<!-- ================ start banner area ================= -->
+	<section class="blog-banner-area" id="contact">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Product Status</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">About Us</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Status</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ================ end banner area ================= -->
+
+	<div class="limiter">
+
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div>
+					<form action="upload-product.html">
+						<button type="submit" class="button button--active button-contactForm">Upload
+							</button>
+					</form>
+				</div>
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Product</th>
+								<th class="column2">Price</th>
+								<th class="column3">Wishlist</th>
+								<th class="column4">Status</th>
+								<th class="column6">Views</th>
+							</tr>
+						</thead>
+						<tbody>
+							<template id="list-row">
+								<tr>
+									<td class="column1"></td>
+									<td class="column2"></td>
+									<td class="column3"></td>
+									<td class="column4"></td>
+									<td class="column6" id="history"></td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--================ Start footer Area  =================-->
+	<footer>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row d-flex">
+					<p class="col-lg-12 footer-text text-center">
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script>
+						SKKU - WEB LAB - Allan Tazhnenov
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area  =================-->
+
+
+
+
+		<script src="../vendors/jquery/jquery-3.2.1.min.js"></script>
+		<script src="../vendors/bootstrap/bootstrap.bundle.min.js"></script>
+		<script src="../vendors/skrollr.min.js"></script>
+		<script src="../vendors/owl-carousel/owl.carousel.min.js"></script>
+		<script src="../vendors/nice-select/jquery.nice-select.min.js"></script>
+		<script src="../vendors/jquery.ajaxchimp.min.js"></script>
+		<script src="../vendors/mail-script.js"></script>
+		<script src="../js/main.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+
+	<script>
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyDMBmB3Qp6IIOnc2etk72sxSO9n1ocQGVE",
+	    authDomain: "skku-project-web.firebaseapp.com",
+	    projectId: "skku-project-web",
+	    storageBucket: "skku-project-web.appspot.com",
+	    messagingSenderId: "20634346129",
+	    appId: "1:20634346129:web:1fbf6989218f1daa2c9530",
+	    measurementId: "G-ZTE6TTHFR5"
+	  };
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+	<script>
+		function historyPrint(obj) {
+			var len = obj.length;
+			var result = "";
+			if (len == 0) return result;
+			for (var i = 0; i < len; i++) {
+				result += obj[i].buyer_name + ": " + obj[i].price + "\n";
+			}
+			console.log(result);
+			return result;
+
+		}
+		var db = firebase.firestore();
+		var docList = [];
+
+		db.collection("product")
+			.get()
+			.then(function (qs) {
+				docList = qs.docs;
+				qs.forEach(function (doc) {
+					var target = document.getElementById('list-row');
+					var clone = document.importNode(target.content, true);
+					var tb = document.querySelector("tbody");
+					td = clone.querySelectorAll("td");
+					console.log(doc.data().history.length);
+					td[0].textContent = doc.data().pname;
+					td[1].textContent = doc.data().price;
+
+					if (doc.data().history.length == 0) td[2].textContent = "-"
+					else td[2].textContent = doc.data().history[doc.data().history.length - 1].buyer_name;
+
+					td[3].textContent = doc.data().status;
+
+					if (doc.data().history.length == 0) td[4].textContent = "-"
+					else td[4].textContent = historyPrint(doc.data().history);
+
+					tb.appendChild(clone);
+				})
+			})
+
+	</script>
+
+</body>
+
+</html>
